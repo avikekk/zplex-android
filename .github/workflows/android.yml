@@ -34,7 +34,8 @@ jobs:
         run: ./gradlew clean assembleDebug test
 
       - name: Upload Debug APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug/*.apk
+
