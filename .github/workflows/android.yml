@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - '*'
-  workflow_dispatch: # Manual trigger
+  workflow_dispatch:
 
 jobs:
   build:
@@ -23,9 +23,10 @@ jobs:
           java-version: 17
 
       - name: Set TMDB API Key from Secrets
-        env:
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-        run: echo "TMDB_API_KEY=$TMDB_API_KEY" >> ./local.properties
+        run: echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" >> ./local.properties
+
+      - name: Set OMDB API Key from Secrets
+        run: echo "OMDB_API_KEY=${{ secrets.OMDB_API_KEY }}" >> ./local.properties
 
       - name: Set Gradle as executable
         run: chmod +x ./gradlew
@@ -38,4 +39,3 @@ jobs:
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug/*.apk
-
