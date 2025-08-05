@@ -20,10 +20,11 @@ jobs:
           distribution: 'temurin'
           java-version: 17
 
+      # --- FIX: Switched to a more common action to resolve the error ---
       # Installs the required Android SDK Build Tools (version 29.0.3)
       # The signing action needs this to find the 'zipalign' tool.
       - name: Set up Android SDK
-        uses: android-actions/setup-sdk@v3
+        uses: setup-android/setup-android@v2
         with:
           build-tools: 29.0.3
 
