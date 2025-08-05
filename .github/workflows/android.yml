@@ -20,6 +20,13 @@ jobs:
           distribution: 'temurin'
           java-version: 17
 
+      # Installs the required Android SDK Build Tools (version 29.0.3)
+      # The signing action needs this to find the 'zipalign' tool.
+      - name: Set up Android SDK
+        uses: android-actions/setup-sdk@v3
+        with:
+          build-tools: 29.0.3
+
       - name: Set API keys for build
         run: |
           echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" >> local.properties
